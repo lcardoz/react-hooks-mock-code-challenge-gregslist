@@ -12,12 +12,21 @@ function App() {
      .then(data => setListings(data))
   }, [])
 
-  //console.log(listings)
+
+  const handleRemoveListing = (doomedListingObj)=> {
+    const filteredListings = listings.filter((listingObj) => {
+      return (listingObj.id !== doomedListingObj.id)
+    })
+    setListings(filteredListings)
+  }
+
+
+
 
   return (
     <div className="app">
       <Header />
-      <ListingsContainer listings={listings} />
+      <ListingsContainer listings={listings} handleRemoveListing={handleRemoveListing}/>
     </div>
   );
 }

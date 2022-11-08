@@ -1,16 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({listings}) {
+function ListingsContainer({listings, handleRemoveListing}) {
+
 
   const renderListings = listings.map((listingObj) => {
     return (
       <ListingCard
         key={listingObj.id}
-        {...listingObj}
+        listingObj={listingObj}
+        handleRemoveListing={handleRemoveListing}
       />
     )
   })
+
+
   return (
     <main>
       <ul className="cards">
